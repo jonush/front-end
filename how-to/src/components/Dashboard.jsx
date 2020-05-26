@@ -4,7 +4,7 @@ import NewGuide from './content/NewGuide';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='dashboard'>
       <GuideList/>
       <NewGuide />
     </div>

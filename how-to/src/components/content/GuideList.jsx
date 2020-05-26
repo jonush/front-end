@@ -9,13 +9,14 @@ const GuideList = props => {
   }, [])
 
   return (
-    <div>
-      {props.isFetching && <h2>Loading How-To Guides...</h2>}
+    <div className='guidelist'>
+      <h1>How-To Guides</h1>
+      {props.isFetching && <h2 className='loading'>Loading How-To Guides...</h2>}
 
       { props.guides && 
         props.guides.map((guide, index) => (
           <Link to={`/guides/${guide.id}`} key={index}>
-            <div>
+            <div className='preview'>
               <img src={guide.img} alt='how-to cover'></img>
               <h1>{guide.title}</h1>
             </div>

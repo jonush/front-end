@@ -30,10 +30,11 @@ const NewGuide = props => {
 
   return(
     !creating ? 
-    (<button onClick={toggleCreating}>Create a How-To Guide</button>) :
+    (<button className='create' onClick={toggleCreating}>Create a How-To</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
       <form onSubmit={createGuide}>
+        <h1>NEW GUIDE</h1>
         <label>
           <input
             type='text'
@@ -45,7 +46,7 @@ const NewGuide = props => {
         </label>
 
         <label>
-          <input
+          <textarea
             type='text'
             name='description'
             value={newGuide.description}
@@ -55,6 +56,7 @@ const NewGuide = props => {
         </label>
 
         <button type='submit'>Create How-To</button>
+        <button onClick={toggleCreating}>Cancel</button>
       </form>
     </div>)
   )

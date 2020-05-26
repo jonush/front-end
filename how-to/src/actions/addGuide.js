@@ -6,12 +6,12 @@ export const ADD_FAILURE = 'ADD_FAILURE';
 
 
 export const addGuide = guide => dispatch => {
-  dispatch({ type: ADD_START, payload: guide});
+  dispatch({ type: ADD_START });
   axiosWithAuth()
     .post('/guides', guide)
     .then(res => {
       console.log(res)
-      dispatch({ type: ADD_SUCCESS })
+      dispatch({ type: ADD_SUCCESS, payload: res.data})
     })
     .catch(err => {
       console.log(err)

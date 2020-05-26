@@ -9,7 +9,7 @@ export const editGuide = (edit, id) => dispatch => {
   axiosWithAuth()
     .put(`/guides/${id}`, edit)
     .then(res => {
-      console.log(res)
+    console.log(res)
       dispatch({ type: EDIT_SUCCESS, payload: res.data})
     })
     .catch(err => {

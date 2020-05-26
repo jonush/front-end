@@ -14,6 +14,7 @@ const Guide = props => {
 
   useEffect(() => {
     setEdit(props.getGuide(id));
+    console.log('Editing this guide:', edit);
   }, [id])
 
   // REVISE CONDITION FOR SETTING ACCESS
@@ -48,6 +49,7 @@ const Guide = props => {
     </div>) : 
     (<div>
       <form onSubmit={submitEdit}>
+        <h1>EDIT GUIDE</h1>
         <label>
           <input
             type='text'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = () => {
@@ -21,7 +21,7 @@ const SignUp = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('/register', user)
+      .post('https://how-to-diy.herokuapp.com/api/auth/register', user)
       .then(res => {
         console.log('POST request for signup', res);
         history.push('/login');
@@ -39,7 +39,7 @@ const SignUp = () => {
   }
 
   return (
-    <div>
+    <div className='signup'>
       <form onSubmit={handleSubmit}>
         <h1>SIGN UP</h1>
 
@@ -76,6 +76,8 @@ const SignUp = () => {
 
         <button onSubmit={handleSubmit}>Sign Up</button>
       </form>
+
+      <h3>Have an account? <Link to='/login'>Log in</Link></h3>
     </div>
   )
 }
