@@ -1,3 +1,8 @@
+body {
+  font-family: 'Avenir';
+}
+
+/* NAVIGATION STYLES */
 nav {
   display: flex;
   justify-content: center;
@@ -13,7 +18,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15%;
+  width: 60px;
   padding: .2rem 0;
 }
 
@@ -32,6 +37,11 @@ nav {
   font-size: 1.2rem;
 }
 
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* WELCOME PAGE STYLES */
 .welcome {
   display: flex;
   flex-direction: column;
@@ -50,7 +60,6 @@ nav {
 
 .welcome-buttons button {
   padding: 1rem;
-  border: none;
   border-radius: 10px;
   background-color: #1773f6;
   color: white;
@@ -58,13 +67,16 @@ nav {
   margin: 0 1rem;
   font-size: 1.2rem;
   font-weight: bold;
+  border: 3px solid #1773f6;
 }
 
 .welcome-buttons button:hover {
   cursor: pointer;
   background-color: #165cbf;
+  border: 3px solid #165cbf;
 }
 
+/* LOGIN PAGE STYLES */
 .login {
   display: flex;
   flex-direction: column;
@@ -81,6 +93,7 @@ nav {
   text-decoration: underline;
 }
 
+/* SIGNUP PAGE STYLES */
 .signup {
   display: flex;
   flex-direction: column;
@@ -97,6 +110,7 @@ nav {
   text-decoration: underline;
 }
 
+/* FORM STYLES */
 form {
   display: flex;
   flex-direction: column;
@@ -115,15 +129,7 @@ input {
   margin: .5rem auto;
   font-size: 1rem;
   background: rgb(166, 188, 210);
-}
-
-textarea {
-  padding: .8rem;
-  border: none;
-  border-radius: 10px;
-  margin: .5rem auto;
-  font-size: 1rem;
-  background: rgb(166, 188, 210);
+  font-family: 'Avenir';
 }
 
 form button {
@@ -132,7 +138,7 @@ form button {
   border-radius: 10px;
   background-color: #1773f6;
   color: white;
-  width: 14.5rem;
+  width: 14rem;
   margin: 0.5rem 1rem;
   font-size: 1.2rem;
   font-weight: bold;
@@ -143,6 +149,15 @@ form button:hover {
   background-color: #165cbf;
 }
 
+.cancel {
+  background-color: #699ce4;
+}
+
+.delete {
+  background: #db332a;
+}
+
+/* DASHBOARD STYLES */
 .dashboard {
  display: flex;
  flex-direction: column-reverse;
@@ -151,12 +166,39 @@ form button:hover {
  padding-top: 4rem;
 }
 
+/* GUIDELIST STYLES */
 .guidelist {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  width: 70%;
+}
+
+/* SEARCH FORM STYLES */
+.search form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search input {
+  padding: 1.05rem;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  width: 20rem;
+  margin: .5rem 0;
+  font-size: 1rem;
+  background: rgb(166, 188, 210);
+  font-family: 'Avenir';
+}
+
+.search button {
+  width: 10rem;
+  margin: 0;
+  border-radius: 0 10px 10px 0;
 }
 
 .loading {
@@ -177,6 +219,7 @@ form button:hover {
   width: 400px;
 }
 
+/* NEW GUIDE STYLES */
 .create {
   padding: 1rem;
   border: none;
@@ -190,6 +233,51 @@ form button:hover {
 }
 
 .create:hover {
+  cursor: pointer;
+  background-color: #165cbf;
+}
+
+.new-guide  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.new-guide  h1 {
+  font-size: 2.6rem;
+}
+
+#image:hover {
+  cursor: pointer;
+}
+
+.new-guide input {
+  padding: 1rem 3rem;
+  margin: .5rem auto;
+  font-size: 1rem;
+  width: 400px;
+}
+
+.new-guide textarea {
+  padding: 2rem 3rem;
+  border: none;
+  border-radius: 10px;
+  margin: .5rem auto;
+  font-size: 1rem;
+  width: 400px;
+  background: rgb(166, 188, 210);
+}
+
+.new-guide button {
+  padding: 1rem;
+  width: 14rem;
+  margin: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.new-guide button:hover {
   cursor: pointer;
   background-color: #165cbf;
 }

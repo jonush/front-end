@@ -45,7 +45,7 @@ const Guide = props => {
       <h1>{edit.title}</h1>
       <p>{edit.description}</p>
       {hasAccess && <button onClick={() => setEditing(true)}>Edit How-To</button>}
-      {hasAccess && <button onClick={() => props.deleteGuide}>Delete How-To</button>}
+      {hasAccess && <button className='delete' onClick={() => props.deleteGuide}>Delete How-To</button>}
     </div>) : 
     (<div>
       <form onSubmit={submitEdit}>
@@ -71,7 +71,7 @@ const Guide = props => {
         </label>
         
         <button type='submit'>Save</button>
-        <button onClick={() => setEditing(false)}>Cancel</button>
+        <button className='cancel' onClick={() => setEditing(false)}>Cancel</button>
       </form>
     </div>)}
 

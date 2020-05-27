@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
@@ -10,13 +10,21 @@ import Guide from './components/content/Guide';
 import './App.css';
 
 function App() {
+  const [loggedIn, setLoggedIn ] = useState(false);
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 
       <Switch>
         <Route exact path='/' component={Welcome} />
-        <Route path='/login' component={Login} />
+        <Route
+          path='/login'
+          render={() => (<Login
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+          />)}
+        />
         <Route path='/signup' component={SignUp} />
         <PrivateRoute path='/dashboard' component={Dashboard} />
         <Route path='/guides/:id' component={Guide} />

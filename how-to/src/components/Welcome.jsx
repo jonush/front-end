@@ -9,8 +9,20 @@ const Welcome = () => {
       <h2>Learn a new skill today.</h2>
       
       <div className='welcome-buttons'>
-        <Link to='/login'><button>Log In</button></Link>
-        <Link to='/signup'><button style={{background: '#db332a'}}>Sign Up</button></Link>
+        <Link className='login-button' to='/login'>
+          <button
+            style={
+              {
+                background: 'white',
+                color: '#1773f6',
+                border: '3px solid #1773f6'
+              }
+            }
+          >Log In</button>
+        </Link>
+        <Link className='signup-button'to='/signup'>
+          <button>Sign Up</button>
+        </Link>
       </div>
     </div>
   )

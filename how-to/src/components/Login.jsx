@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ loggedIn, setLoggedIn }) => {
   const history = useHistory();
 
   const [ credentials, setCredentials ] = useState({
@@ -24,6 +24,7 @@ const Login = () => {
       .then(res => {
         console.log('POST request for login', res);
         localStorage.setItem('token', res.data.payload);
+        setLoggedIn(!loggedIn);
         history.push('/dashboard');
       })
       .catch(err => {
@@ -45,7 +46,7 @@ const Login = () => {
         <label>
           <input 
             type='text'
-            autofocus
+            //autoFocus
             name='username'
             value={credentials.username}
             onChange={handleInput}
@@ -66,7 +67,7 @@ const Login = () => {
         <button onSubmit={handleSubmit}>Log In</button>
       </form>
       
-      <h3>Don't have an account? Sign up <Link to='/signup'>here</Link></h3>
+      <h3>Don't have an account? <Link to='/signup'>Sign up</Link></h3>
     </div>
   )
 }

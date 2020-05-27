@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addGuide } from '../../actions/addGuide';
 
 const initialGuide = ({
+  image: '',
   title: '',
   description: '',
 })
@@ -33,8 +34,18 @@ const NewGuide = props => {
     (<button className='create' onClick={toggleCreating}>Create a How-To</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
-      <form onSubmit={createGuide}>
+      <form className='new-guide' onSubmit={createGuide}>
         <h1>NEW GUIDE</h1>
+        <label htmlFor='image'>Select a cover image:</label>
+        <input
+          id='image'
+          type='file'
+          accept='image/*'
+          name='image'
+          value={newGuide.image}
+          onChange={handleInput}
+        />
+
         <label>
           <input
             type='text'
@@ -55,8 +66,10 @@ const NewGuide = props => {
           />
         </label>
 
-        <button type='submit'>Create How-To</button>
-        <button onClick={toggleCreating}>Cancel</button>
+        <div className='create-buttons'>
+          <button className='cancel' onClick={toggleCreating}>Cancel</button>
+          <button type='submit'>Create How-To</button>
+        </div>
       </form>
     </div>)
   )
