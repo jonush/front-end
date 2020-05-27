@@ -6,8 +6,8 @@ import '../App.css';
 const Navbar = ({ loggedIn, setLoggedIn }) => {
 
   const logOut = () => {
-    setLoggedIn(!loggedIn);
     localStorage.removeItem('token');
+    setLoggedIn(!loggedIn);
   }
 
   return (
@@ -17,7 +17,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       </NavLink>
 
       <div className='nav-links'>
-        <NavLink to='/about'>About</NavLink>
+    {/* <NavLink to='/about'>About</NavLink> */}
         {
           loggedIn === true ? 
           <NavLink to='/login' onClick={logOut}>Logout</NavLink> :

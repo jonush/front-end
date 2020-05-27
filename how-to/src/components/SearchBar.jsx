@@ -14,8 +14,8 @@ const SearchBar = props => {
         <input
           type='text'
           placeholder='Search How-To'
-          name=''
-          value=''
+          name='titles'
+          value={props.guides.titles}
           onChange={e => setSearch(e.target.value)}
         />
 

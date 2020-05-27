@@ -9,7 +9,7 @@ export const deleteGuide = id => dispatch => {
   const history = useHistory();
   dispatch({ type: DELETE_START, payload: id});
   axiosWithAuth()
-    .delete(`/guides/${id}`)
+    .delete(`https://how-to-diy.herokuapp.com/api/auth/projects/${id}`)
     .then(res => {
       console.log(res)
       dispatch({ type: DELETE_SUCCESS, payload: res.data})

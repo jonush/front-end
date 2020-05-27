@@ -7,7 +7,7 @@ export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const fetchGuides = () => dispatch => {
   dispatch({ type: FETCH_START });
   axiosWithAuth()
-    .get('/guides')
+    .get('https://how-to-diy.herokuapp.com/api/auth/projects')
     .then(res => {
       console.log(res)
       dispatch({ type: FETCH_SUCCESS, payload: res.data })
@@ -25,7 +25,7 @@ export const GET_FAILURE = 'GET_FAILURE';
 export const getGuide = id => dispatch => {
   dispatch({ type: GET_START });
   axiosWithAuth()
-    .get(`/guides/${id}`)
+    .get(`https://how-to-diy.herokuapp.com/api/auth/projects/${id}`)
     .then(res => {
       console.log(res)
       dispatch({ type: GET_SUCCESS, payload: res.data })

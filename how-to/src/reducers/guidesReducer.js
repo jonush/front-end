@@ -8,6 +8,7 @@ import {
 } from '../actions/fetchGuides';
 
 export const initialState = {
+  isFetching: false,
   isGetting: false,
   guides: [],
   guide: [],

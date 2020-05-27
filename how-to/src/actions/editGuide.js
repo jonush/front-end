@@ -7,7 +7,7 @@ export const EDIT_FAILURE = 'EDIT_FAILURE';
 export const editGuide = (edit, id) => dispatch => {
   dispatch({ type: EDIT_START, payload: edit});
   axiosWithAuth()
-    .put(`/guides/${id}`, edit)
+    .put(`https://how-to-diy.herokuapp.com/api/auth/projects/${id}`, edit)
     .then(res => {
     console.log(res)
       dispatch({ type: EDIT_SUCCESS, payload: res.data})

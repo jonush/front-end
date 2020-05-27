@@ -3,35 +3,34 @@ import { connect } from 'react-redux';
 import { addGuide } from '../../actions/addGuide';
 
 const initialGuide = ({
-  image: '',
   title: '',
   description: '',
+  image: '',
+  likes: 0,
+  date: new Date(),
+  comments: []
 })
 
 const NewGuide = props => {
-  const [ newGuide, setNewGuide ] = useState(initialGuide);
+  const [ guide, setGuide ] = useState(initialGuide);
   const [ creating, setCreating ] = useState(false);
 
-  const toggleCreating = () => {
-    setCreating(true);
-  }
-
   const handleInput = e => {
-    setNewGuide({
-      ...newGuide,
+    setGuide({
+      ...guide,
       [e.target.name]: e.target.value
     })
   }
 
   const createGuide = e => {
     e.preventDefault();
-    props.addGuide(newGuide);
-    setCreating(false);
+    props.addGuide(guide);
+    setCreating(!creating);
   }
 
   return(
     !creating ? 
-    (<button className='create' onClick={toggleCreating}>Create a How-To</button>) :
+    (<button className='create' onClick={() => setCreating(!creating)}>Create a How-To</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
       <form className='new-guide' onSubmit={createGuide}>
@@ -42,7 +41,7 @@ const NewGuide = props => {
           type='file'
           accept='image/*'
           name='image'
-          value={newGuide.image}
+          value={guide.image}
           onChange={handleInput}
         />
 
@@ -50,7 +49,7 @@ const NewGuide = props => {
           <input
             type='text'
             name='title'
-            value={newGuide.title}
+            value={guide.title}
             onChange={handleInput}
             placeholder='Title'
           />
@@ -60,14 +59,14 @@ const NewGuide = props => {
           <textarea
             type='text'
             name='description'
-            value={newGuide.description}
+            value={guide.description}
             onChange={handleInput}
             placeholder='Description'
           />
         </label>
 
         <div className='create-buttons'>
-          <button className='cancel' onClick={toggleCreating}>Cancel</button>
+          <button className='cancel' onClick={() => setCreating(!creating)}>Cancel</button>
           <button type='submit'>Create How-To</button>
         </div>
       </form>

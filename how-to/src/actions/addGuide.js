@@ -8,7 +8,7 @@ export const ADD_FAILURE = 'ADD_FAILURE';
 export const addGuide = guide => dispatch => {
   dispatch({ type: ADD_START });
   axiosWithAuth()
-    .post('/guides', guide)
+    .post('https://how-to-diy.herokuapp.com/api/auth/projects', guide)
     .then(res => {
       console.log(res)
       dispatch({ type: ADD_SUCCESS, payload: res.data})
