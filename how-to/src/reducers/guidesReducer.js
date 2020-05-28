@@ -4,7 +4,7 @@ import {
   FETCH_FAILURE, 
   GET_START,
   GET_SUCCESS,
-  GET_FAILURE
+  GET_FAILURE,
 } from '../actions/fetchGuides';
 
 export const initialState = {

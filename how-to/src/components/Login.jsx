@@ -23,7 +23,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
       .post('https://how-to-diy.herokuapp.com/api/auth/login', credentials)
       .then(res => {
         console.log('POST request for login', res);
-        localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('token', res.data.token);
         setLoggedIn(!loggedIn);
         history.push('/dashboard');
       })

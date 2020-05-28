@@ -4,11 +4,10 @@ import { addGuide } from '../../actions/addGuide';
 
 const initialGuide = ({
   title: '',
-  description: '',
+  bodyText: '',
   image: '',
   likes: 0,
   date: new Date(),
-  comments: []
 })
 
 const NewGuide = props => {
@@ -26,6 +25,7 @@ const NewGuide = props => {
     e.preventDefault();
     props.addGuide(guide);
     setCreating(!creating);
+    setGuide(initialGuide);
   }
 
   return(
@@ -58,8 +58,8 @@ const NewGuide = props => {
         <label>
           <textarea
             type='text'
-            name='description'
-            value={guide.description}
+            name='bodyText'
+            value={guide.bodyText}
             onChange={handleInput}
             placeholder='Description'
           />
@@ -75,6 +75,7 @@ const NewGuide = props => {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     isAdding: state.add.isAdding,
     guide: state.add.guide,

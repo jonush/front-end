@@ -4,10 +4,13 @@ import heart from '../../heart.svg';
 import outline from '../../love.svg';
 import { getGuide } from '../../actions/fetchGuides';
 import { editGuide } from '../../actions/editGuide';
+import { useParams } from 'react-router-dom';
 
 const Likes = props => {
+  const { guide } = props;
   const [ liked, setLiked ] = useState(false);
   const [ likes, setLikes ] = useState(guide.likes);
+  const { id } = useParams();
 
   const toggleLike = e => {
     e.preventDefault();
@@ -23,12 +26,12 @@ const Likes = props => {
   }
 
   return (
-    <div>
-      {!like ?
-        <img style={{ width: '80px'}} onClick={toggleLike} src={heart}></img> :
-        <img style={{ width: '80px'}} onClick={toggleLike} src={outline}></img>
+    <div className='likes'>
+      {!liked ?
+        <img style={{ width: '80px'}} onClick={toggleLike} src={outline}></img> :
+        <img style={{ width: '80px'}} onClick={toggleLike} src={heart}></img>
       }
-      <p>{guide.likes} likes</p>
+      <h3>{guide.likes} likes</h3>
     </div>
   )
 }

@@ -281,3 +281,114 @@ form button:hover {
   cursor: pointer;
   background-color: #165cbf;
 }
+
+.guide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.guide-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.guide-buttons button {
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #1773f6;
+  color: white;
+  width: 14rem;
+  margin: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.guide-buttons button:hover {
+  cursor: pointer;
+  background-color: #165cbf;
+}
+
+.guide h1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 2rem 0 0;
+  font-size: 2.4rem;
+}
+
+.guide h2 {
+  margin: 0 0 .4rem;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.likes h3 {
+  padding: .6rem 0 0;
+}
+
+.heart {
+  width: 40px;
+  filter: invert(36%) sepia(45%) saturate(6669%) hue-rotate(208deg) brightness(103%) contrast(93%);
+}
+
+.guide h3 {
+  margin: 0 0 .4rem;
+}
+
+.cover-img {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+}
+
+.comment span {
+ margin: 0 0.6rem 0 0;
+ font-size: 1.1rem;
+ color: #1773f6;
+}
+
+.comment p {
+  margin: 0 0.6rem 0 0;
+  padding-left: 1rem;
+  text-align: center;
+}
+
+.guide form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.guide input {
+  margin: 0;
+  border-radius: 10px 0 0 10px;
+  padding: .54rem 4rem .54rem 2rem;
+}
+
+.guide form button {
+  margin: 0;
+  padding: .50rem;
+  border-radius: 0 10px 10px 0;
+  width: 20%;
+}
