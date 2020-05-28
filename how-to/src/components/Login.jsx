@@ -46,7 +46,6 @@ const Login = ({ loggedIn, setLoggedIn }) => {
         <label>
           <input 
             type='text'
-            //autoFocus
             name='username'
             value={credentials.username}
             onChange={handleInput}

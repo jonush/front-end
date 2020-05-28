@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
-const SearchBar = props => {
-  const [ search, setSearch ] = useState('');
-
+const SearchBar = ({ searchGuide }) => {
   const searchGuides = e => {
-    e.preventDefault();
-    props.guides(search);
+    const search = e.target.value;
+    searchGuide(search);
   }
 
   return (
@@ -14,9 +12,7 @@ const SearchBar = props => {
         <input
           type='text'
           placeholder='Search How-To'
-          name='titles'
-          value={props.guides.titles}
-          onChange={e => setSearch(e.target.value)}
+          onChange={searchGuide}
         />
 
         <button type='submit'>Search</button>

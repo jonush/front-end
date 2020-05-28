@@ -1,47 +1,60 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import heart from '../../heart.svg';
 import outline from '../../love.svg';
-import { getGuide } from '../../actions/fetchGuides';
-import { editGuide } from '../../actions/editGuide';
 import { useParams } from 'react-router-dom';
+import { useLocalStorage } from '../../useLocalStorage';
 
 const Likes = props => {
-  const { guide } = props;
   const [ liked, setLiked ] = useState(false);
-  const [ likes, setLikes ] = useState(guide.likes);
   const { id } = useParams();
+  const [ likes, setLikes ] = useLocalStorage('likes', []);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`https://how-to-diy.herokuapp.com/projects/${id}`)
+      .then(res => {
+        console.log('GET request for likes', res);
+        setLikes(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [id])
 
   const toggleLike = e => {
     e.preventDefault();
 
-    if(likes === guide.likes) {
-      setLikes(guide.likes + 1)
-    } else if(likes = guide.likes + 1) {
-      setLikes(guide.likes - 1)
+    if(liked === false) {
+      setLikes({
+        ...likes,
+        likes: Number(likes.likes) + 1
+      });
+      setLiked(true);
+    } 
+    else if(liked === true) {
+      setLikes({
+        ...likes,
+        likes: Number(likes.likes) - 1
+      });
+      setLiked(false);
     }
-    
-    props.editGuide(likes, id);
-    setLiked(!liked);
   }
+
+  useEffect(() => {
+    axiosWithAuth()
+      .put(`https://how-to-diy.herokuapp.com/projects/${id}`, likes)
+      .then(res => console.log('PUT request for likes', res))
+      .catch(err => console.log(err));
+  }, [liked])
 
   return (
     <div className='likes'>
+      <h2>{likes.likes} </h2>
       {!liked ?
-        <img style={{ width: '80px'}} onClick={toggleLike} src={outline}></img> :
-        <img style={{ width: '80px'}} onClick={toggleLike} src={heart}></img>
+        <img className='heart' onClick={toggleLike} src={outline}></img> :
+        <img className='heart' onClick={toggleLike} src={heart}></img>
       }
-      <h3>{guide.likes} likes</h3>
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    isGetting: state.guides.isGetting,
-    guide: state.guides.guide,
-    errors: state.guides.errors
-  }
-}
-
-export default connect(mapStateToProps, {getGuide, editGuide})(Likes);
+export default Likes;

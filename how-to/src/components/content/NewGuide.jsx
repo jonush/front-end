@@ -7,6 +7,7 @@ const initialGuide = ({
   bodyText: '',
   image: '',
   likes: 0,
+  author: '',
   date: new Date(),
 })
 
@@ -33,11 +34,11 @@ const NewGuide = props => {
     (<button className='create' onClick={() => setCreating(!creating)}>Create a How-To</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
-      <form className='new-guide' onSubmit={createGuide}>
+      <form className='new-guide' encType="multipart/form-data" onSubmit={createGuide}>
         <h1>NEW GUIDE</h1>
         <label htmlFor='image'>Select a cover image:</label>
         <input
-          id='image'
+          id='file'
           type='file'
           accept='image/*'
           name='image'
@@ -52,6 +53,16 @@ const NewGuide = props => {
             value={guide.title}
             onChange={handleInput}
             placeholder='Title'
+          />
+        </label>
+
+        <label>
+          <input
+            type='text'
+            name='author'
+            value={guide.author}
+            onChange={handleInput}
+            placeholder='Author'
           />
         </label>
 

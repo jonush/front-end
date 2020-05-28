@@ -1,31 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchGuides } from '../../actions/fetchGuides';
 import Moment from 'react-moment';
-import SearchBar from '../SearchBar';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import logo from '../../HowTo.png';
 
-const GuideList = props => {
+const GuideList = () => {
+  const [ guides, setGuides ] = useState([]);
+  const [ search, setSearch ] = useState('');
+
   useEffect(() => {
-    props.fetchGuides();
+    axiosWithAuth()
+      .get('https://how-to-diy.herokuapp.com/projects/')
+      .then(res => {
+        console.log(res);
+        setGuides(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [])
+
+  const handleSearch = e => {
+    setSearch(e.target.value);
+  }
+
+  const searchGuides = () => {
+    const found = search.trim();
+    return guides.filter(guide => {
+      if(!found) {
+        return guide;
+      }
+      else if(guide.title.toLowerCase().includes(found.toLowerCase())) {
+        return guide;
+      } 
+    })
+  }
+
+  useEffect(() => {
+    searchGuides();
+  }, [search])
 
   return (
     <div className='guidelist'>
       <h1>How-To Guides</h1>
 
-      <SearchBar guides={props.guides} />
+      <div className='search'>
+        <form>
+          <input
+            type='text'
+            placeholder='Search How-To'
+            value={search}
+            onChange={handleSearch}
+          />
+        </form>
+      </div>
 
-      {props.isFetching && <h2 className='loading'>Loading How-To Guides...</h2>}
-
-      {props.guides && 
-        props.guides.map((guide, index) => (
-          <Link to={`/guides/${guide.id}`} key={index}>
-            <div className='preview'>
-              <img src={guide.img} alt='how-to cover'></img>
+      {
+        guides.map((guide, index) => (
+          <Link  className='preview' to={`/projects/${guide.id}`} key={index}>
+            <div className='preview-text'>
               <h1>{guide.title}</h1>
               <h3><Moment format='MM/DD/YYYY'>{guide.date}</Moment></h3>
             </div>
+            <img src={logo}></img>
           </Link>
         ))
       }
@@ -33,12 +70,4 @@ const GuideList = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    isFetching: state.guides.isFetching,
-    guides: state.guides.guides,
-    errors: state.guides.errors
-  }
-}
-
-export default connect(mapStateToProps, {fetchGuides})(GuideList);
+export default GuideList;

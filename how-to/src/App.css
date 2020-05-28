@@ -182,23 +182,18 @@ form button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: .4rem;
 }
 
 .search input {
   padding: 1.05rem;
   border: none;
-  border-radius: 10px 0 0 10px;
-  width: 20rem;
+  border-radius: 10px;
+  width: 25rem;
   margin: .5rem 0;
   font-size: 1rem;
   background: rgb(166, 188, 210);
   font-family: 'Avenir';
-}
-
-.search button {
-  width: 10rem;
-  margin: 0;
-  border-radius: 0 10px 10px 0;
 }
 
 .loading {
@@ -207,16 +202,31 @@ form button:hover {
 }
 
 .preview {
-  border: 2px solid #1773f6;
+  border: 6px solid #1773f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
-  padding: 1rem;
   text-decoration: none;
   color: black;
   font-size: 1rem;
+  width: 800px;
+  height: 300px;
+  margin: 1rem auto;
+}
+
+.preview:hover {
+  box-shadow: 0 1px 3px .1px black;
+  color: #1773f6;
+}
+
+.preview-text {
+  padding-left: 2rem;
 }
 
 .preview img {
-  width: 400px;
+  width: 40%;
+  height: 100%;
 }
 
 /* NEW GUIDE STYLES */
@@ -251,6 +261,10 @@ form button:hover {
 
 #image:hover {
   cursor: pointer;
+}
+
+.new-guide label {
+  font-size: 1.4rem;
 }
 
 .new-guide input {
@@ -291,6 +305,20 @@ form button:hover {
   padding: 2rem;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .guide-buttons {
   display: flex;
   flex-direction: row;
@@ -320,12 +348,12 @@ form button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 2rem 0 0;
+  margin: 0;
   font-size: 2.4rem;
 }
 
 .guide h2 {
-  margin: 0 0 .4rem;
+  margin: 0;
 }
 
 .likes {
@@ -335,8 +363,9 @@ form button:hover {
   align-items: center;
 }
 
-.likes h3 {
-  padding: .6rem 0 0;
+.likes h2 {
+  padding: .2rem 0 0;
+  color: black;
 }
 
 .heart {
@@ -344,13 +373,18 @@ form button:hover {
   filter: invert(36%) sepia(45%) saturate(6669%) hue-rotate(208deg) brightness(103%) contrast(93%);
 }
 
+.heart:hover {
+  cursor: pointer;
+}
+
 .guide h3 {
   margin: 0 0 .4rem;
+  color: #1773f6;
 }
 
 .cover-img {
   width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
 }
 
 .comment {
@@ -363,14 +397,28 @@ form button:hover {
 
 .comment span {
  margin: 0 0.6rem 0 0;
- font-size: 1.1rem;
- color: #1773f6;
+ font-size: 0.8rem;
+ color: red;
 }
 
 .comment p {
-  margin: 0 0.6rem 0 0;
-  padding-left: 1rem;
+  margin: 0.2rem 0.6rem 0 0;
   text-align: center;
+  color: rgb(79, 89, 99);
+}
+
+.comment p:hover {
+  text-decoration-color: red;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.comment p:hover + .deleteC, .deleteC:hover {
+  display: inline-block;
+}
+
+.deleteC {
+  display: none;
 }
 
 .guide form {
@@ -380,15 +428,20 @@ form button:hover {
   margin-top: 2rem;
 }
 
+.guide img {
+  border-radius: 20px;
+}
+
 .guide input {
   margin: 0;
   border-radius: 10px 0 0 10px;
   padding: .54rem 4rem .54rem 2rem;
+  width: 420px;
 }
 
 .guide form button {
   margin: 0;
-  padding: .50rem;
+  padding: .48rem 1rem;
   border-radius: 0 10px 10px 0;
   width: 20%;
 }

@@ -8,7 +8,6 @@ const SignUp = () => {
   const [user, setUser ] = useState({
     username: '',
     password: '',
-    //email: ''
   })
 
   const handleInput = e => {
@@ -34,7 +33,6 @@ const SignUp = () => {
     setUser({
       username: '',
       password: '',
-      //email: ''
     })
   }
 
@@ -46,7 +44,6 @@ const SignUp = () => {
         <label>
           <input 
             type='text'
-            //autoFocus
             name='username'
             value={user.username}
             onChange={handleInput}
@@ -63,16 +60,6 @@ const SignUp = () => {
             placeholder='Password'
           />
         </label>
-
-        {/* <label>
-          <input 
-            type='text'
-            name='email'
-            value={user.email}
-            onChange={handleInput}
-            placeholder='Email'
-          />
-        </label> */}
 
         <button onSubmit={handleSubmit}>Sign Up</button>
       </form>
