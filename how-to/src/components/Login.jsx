@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Login = ({ loggedIn, setLoggedIn }) => {
   const history = useHistory();
 
@@ -33,8 +34,8 @@ const Login = ({ loggedIn, setLoggedIn }) => {
       });
 
     setCredentials({
-      username: '',
-      password: ''
+      Email: '',
+      Password: ''
     })
   }
 

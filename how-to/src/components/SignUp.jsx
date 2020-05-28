@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const SignUp = () => {
   const history = useHistory();
+  
 
   const [user, setUser ] = useState({
     username: '',
     password: '',
-    //email: ''
+    email: '',
   })
 
   const handleInput = e => {
