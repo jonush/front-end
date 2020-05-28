@@ -8,7 +8,8 @@ import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
 import Guide from './components/content/Guide';
 import './App.css';
-import ValidatedLoginForm from './components/ValidatedLoginForm';
+
+
 
 function App() {
   const [loggedIn, setLoggedIn ] = useState(false);
