@@ -57,6 +57,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 2rem;
 }
 
 .welcome-buttons button {

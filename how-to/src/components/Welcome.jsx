@@ -5,26 +5,26 @@ import '../welcome.css';
 
 const Welcome = () => {
   return (
-    <section class="big-boi">
+    <section className="big-boi">
 
-      <section class="main-container">
-        <section class="top-content">
-          <div class='top-content-div'>
-            <h3 class='heading-text'>HowTo</h3>
-            <p class='text-container'>We'll throw some old gray clouds in here just sneaking around and having fun. What the devil. We'll paint one happy little tree right here. Let's give him a friend too. Everybody needs a friend.</p>
+      <section className="main-container">
+        <section className="top-content">
+          <div className='top-content-div'>
+            <h3 className='heading-text'>HowTo</h3>
+            <p className='text-container'>We'll throw some old gray clouds in here just sneaking around and having fun. What the devil. We'll paint one happy little tree right here. Let's give him a friend too. Everybody needs a friend.</p>
           </div>
-          <div class='top-content-div'>
-            <h3 class='heading-text'>Lorem</h3>
-            <p class='text-container'>We'll throw some old gray clouds in here just sneaking around and having fun. What the devil. We'll paint one happy little tree right here. Let's give him a friend too. Everybody needs a friend.</p>
+          <div className='top-content-div'>
+            <h3 className='heading-text'>Lorem</h3>
+            <p className='text-container'>We'll throw some old gray clouds in here just sneaking around and having fun. What the devil. We'll paint one happy little tree right here. Let's give him a friend too. Everybody needs a friend.</p>
           </div>
         </section>
 
-        <section class="middle-content">
-          <div class='middle-content-div'>
-            <h2 class='heading-text'>
+        <section className="middle-content">
+          <div className='middle-content-div'>
+            <h2 className='heading-text'>
               Lorem
             </h2>
-            <p class="text-container">
+            <p className="text-container">
               We'll throw some old gray clouds in here just sneaking around and having fun. What the devil. We'll paint one happy little tree right here. Let's give him a friend too. Everybody needs a friend.
               </p>
           </div>
@@ -46,7 +46,7 @@ const Welcome = () => {
           </div>
           </section>
         </section>
-      <footer class="bottom-content">
+      <footer className="bottom-content">
         <nav>
           <NavLink to='/about'>About</NavLink>
           <NavLink to='/'><img src={logo} alt="HowToMonkey" /></NavLink>
