@@ -390,6 +390,7 @@ form button:hover {
   align-items: flex-start;
   margin: 0;
   font-size: 2.4rem;
+  color: #1773f6;
 }
 
 .guide h2 {
@@ -451,6 +452,7 @@ form button:hover {
 
 .comment p {
   margin: 0.2rem 0.6rem 0 0;
+  font-size: 1rem;
   text-align: center;
   color: rgb(79, 89, 99);
 }
@@ -489,7 +491,7 @@ form button:hover {
 
 .guide form button {
   margin: 0;
-  padding: .48rem 1rem;
+  padding: .48rem 1.6rem;
   border-radius: 0 10px 10px 0;
   width: 20%;
 }

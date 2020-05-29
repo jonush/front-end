@@ -23,18 +23,18 @@ const Guide = () => {
 
   const update = () => {
     axiosWithAuth()
-    .get(`https://how-to-diy.herokuapp.com/projects/${id}`)
-    .then(res => {
-      console.log('GET request for specific guide id', res);
-      setEdit(res.data);
-    })
-    .then(
-      axiosWithAuth()
-        .get(`https://how-to-diy.herokuapp.com/projects/comments/`)
-        .then(res => setComments(res.data))
-        .catch(err => console.log(err))
-    )
-    .catch(err => console.log(err));
+      .get(`https://how-to-diy.herokuapp.com/projects/${id}`)
+      .then(res => {
+        console.log('GET request for specific guide id', res);
+        setEdit(res.data);
+      })
+      .then(
+        axiosWithAuth()
+          .get(`https://how-to-diy.herokuapp.com/projects/comments/`)
+          .then(res => setComments(res.data))
+          .catch(err => console.log(err))
+      )
+      .catch(err => console.log(err));
   }
 
   const handleEdit = e => {
