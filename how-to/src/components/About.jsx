@@ -8,6 +8,7 @@ import sandra from './assets/Sandra-Coburn.png';
 import cody from './assets/Cody-Morley.jpg';
 import heath from './assets/Heath-Scott.png';
 import jon from './assets/Jonathon-Hsu.png';
+import noah from './assets/noah.jpg';
 
 const About = () => {
   return (
@@ -44,7 +45,7 @@ const About = () => {
         <p className="card-text">I’m a front-end software engineer currently studying web development at Lambda School. My interests lie in user experience and user interface design.</p>
       </div>
       <div className="about-card">
-        <img src='' alt="Noah-Green"/>
+        <img src={noah} alt="Noah-Green"/>
         <h3 className="card-heading">Noah Green - WEB UI Developer (WEB32)</h3>
         <p className="card-text">Noah Green is a software developer learning web development through Lambda School.</p>
       </div>
