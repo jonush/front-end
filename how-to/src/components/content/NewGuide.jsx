@@ -31,7 +31,7 @@ const NewGuide = props => {
 
   return(
     !creating ? 
-    (<button className='create' onClick={() => setCreating(!creating)}>Create a How-To</button>) :
+    (<button className='create' onClick={() => setCreating(!creating)}>Create</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
       <form className='new-guide' encType="multipart/form-data" onSubmit={createGuide}>

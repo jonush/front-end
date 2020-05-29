@@ -3,11 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
 import Welcome from './components/Welcome';
+import About from './components/About';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
 import Guide from './components/content/Guide';
-import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn ] = useState(false);
@@ -18,6 +18,7 @@ function App() {
 
       <Switch>
         <Route exact path='/' component={Welcome} />
+        <Route path='/about' component={About} />
         <Route
           path='/login'
           render={() => (<Login

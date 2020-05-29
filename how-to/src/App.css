@@ -8,6 +8,7 @@ nav {
   justify-content: center;
   background-color: #1773f6;
   align-items: center;
+  border-radius: 0 0 20px 20px;
 }
 
 .home-link {
@@ -82,6 +83,12 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
+}
+
+.login h3 {
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .login a {
@@ -166,14 +173,35 @@ form button:hover {
  padding-top: 4rem;
 }
 
+.dashboard h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.browse {
+  margin: 0;
+  color: #1773f6;
+}
+
 /* GUIDELIST STYLES */
 .guidelist {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin: 2rem 0 .2rem;
   width: 70%;
+}
+
+.guidelist h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.guidelist h3 {
+  font-size: 1.8rem;
+  margin-top: 1rem;
 }
 
 /* SEARCH FORM STYLES */
@@ -222,6 +250,14 @@ form button:hover {
 
 .preview-text {
   padding-left: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1773f6;
+}
+
+.preview h1 {
+  font-size: 2.2rem;
+  color: black;
 }
 
 .preview img {
@@ -310,6 +346,8 @@ form button:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .details {
@@ -317,6 +355,7 @@ form button:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.6rem;
 }
 
 .guide-buttons {
@@ -356,6 +395,12 @@ form button:hover {
   margin: 0;
 }
 
+.guide h4 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  line-height: 1.6re;
+}
+
 .likes {
   display: flex;
   flex-direction: row;
@@ -378,7 +423,8 @@ form button:hover {
 }
 
 .guide h3 {
-  margin: 0 0 .4rem;
+  font-size: 1.6rem;
+  margin: 1rem 0 .4rem;
   color: #1773f6;
 }
 
@@ -393,6 +439,7 @@ form button:hover {
   justify-content: flex-start;
   align-items: center;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .comment span {
