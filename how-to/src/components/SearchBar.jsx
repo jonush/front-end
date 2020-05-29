@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import '../App.css';
 
-const SearchBar = props => {
-  const [ search, setSearch ] = useState('');
-
-  const searchGuides = e => {
-    e.preventDefault();
-    props.guides(search);
+const SearchBar = ({ setSearch }) => {
+  const handleSearch = e => {
+    setSearch(e.target.value);
   }
 
   return (
-    <div className='search'>
-      <form onSubmit={searchGuides}>
-        <input
-          type='text'
-          placeholder='Search How-To'
-          name='titles'
-          value={props.guides.titles}
-          onChange={e => setSearch(e.target.value)}
-        />
+    <div className='guidelist'>
+      <h1>How-To Guides</h1>
+      <h3 className='browse'>Browse the guides.</h3>
 
-        <button type='submit'>Search</button>
-      </form>
+      <div className='search'>
+        <form>
+          <input
+            type='text'
+            placeholder='Search How-To'
+            onChange={handleSearch}
+          />
+        </form>
+      </div>
     </div>
   )
 }

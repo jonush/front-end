@@ -1,117 +1,175 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import Moment from 'react-moment';
-import { getGuide } from '../../actions/fetchGuides';
-import { editGuide } from '../../actions/editGuide';
-import { deleteGuide } from '../../actions/deleteGuide';
+import Likes from '../content/Likes';
+import logo from '../../HowTo.png';
 
-const Guide = props => {
-  const { access, setAccess } = useState(false);
+const initialComment = {
+  comments: '',
+}
+
+const Guide = () => {
   const [ edit, setEdit] = useState([]);
   const [ editing, setEditing ] = useState(false);
+  const [ comments, setComments ] = useState([]);
+  const [ comment, setComment ] = useState(initialComment);
   const history = useHistory();
   const { id } = useParams();
 
-  const addComment = e => {
-    e.preventDefault();
-    props.editGuide(edit, id);
+  useEffect(() => {
+    update();
+  }, [])
+
+  const update = () => {
+    axiosWithAuth()
+    .get(`https://how-to-diy.herokuapp.com/projects/${id}`)
+    .then(res => {
+      console.log('GET request for specific guide id', res);
+      setEdit(res.data);
+    })
+    .then(
+      axiosWithAuth()
+        .get(`https://how-to-diy.herokuapp.com/projects/comments/`)
+        .then(res => setComments(res.data))
+        .catch(err => console.log(err))
+    )
+    .catch(err => console.log(err));
   }
-
-  useEffect(() => {
-    setEdit(props.getGuide(id));
-    console.log('Editing this guide:', edit);
-  }, [id])
-
-  // REVISE CONDITION FOR ACCESSING EDIT/DELETE BUTTONS
-  useEffect(() => {
-    return edit.id === id ? setAccess(true) : null
-  })
 
   const handleEdit = e => {
     setEdit({
       ...edit,
+      date: new Date(),
       [e.target.name]: e.target.value
     })
   }
 
-  // REVISE PUT REQUEST FOR EDITING GUIDES
-  const submitEdit = (e, id) => {
+  const submitEdit = e => {
+    axiosWithAuth()
+      .put(`https://how-to-diy.herokuapp.com/projects/${id}`, edit)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+    setEditing(!editing);
+    update();
+  }
+
+  const deleteGuide = () => {
+    axiosWithAuth()
+      .delete(`https://how-to-diy.herokuapp.com/projects/${id}`)
+      .then(res => {
+        console.log('DELETE request for guide', res)
+        history.push('/dashboard');
+      })
+      .catch(err => console.log(err));
+  }
+
+  const handleComment = e => {
+    setComment({
+      ...comment,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const addComment = e => {
     e.preventDefault();
-    props.editGuide(edit, id);
-    setEditing(false);
+    axiosWithAuth()
+      .post(`https://how-to-diy.herokuapp.com/projects/comments/${id}`, comment)
+      .then(res => console.log('POST request for comment', res))
+      .catch(err => console.log(err))
+    setComment(initialComment);
+    update();
+  }
+
+  const deleteComment = () => {
+    axiosWithAuth()
+      .delete(`https://how-to-diy.herokuapp.com/comments/${id}`)
+      .then(res => console.log('DELETE request for comment', res))
+      .catch(err => console.log(err))
+    update();
   }
 
   return (
     <>
     {!editing ?
-    (edit && <div>
-      <img src={edit.img} alt='how-to cover'></img>
-      <h1>{edit.title}</h1>
-      <h3><Moment format='MM/DD/YYYY'>{edit.date}</Moment></h3>
-      <h3>{edit.likes}</h3>
-      <p>{edit.description}</p>
+    ( <> <div className='guide'>
+      <img className='cover-img' src={logo} alt='no how-to cover image'></img>
+      <div className='header'>
+        <h1>{edit.title}</h1>
+        <h2><Moment format='MM/DD/YYYY'>{edit.date}</Moment></h2>
+      </div>
+
+      <div className='details'>
+        <h2>By: {edit.author}</h2>
+        <Likes />
+      </div>
+
+      <h4>{edit.bodyText}</h4>
+
       <h3>Comments:</h3>
-      {edit.comments && edit.comments.map((comment, index) => (
-        <div>
-          <h3  key={index}>{comment.username}</h3>
-          <p>{comment.comment}</p>
+      {comments ? comments.map((post, index) => (
+        <div className='comment' key={index}>
+          <p onClick={deleteComment}>{post.comments}</p>
+          <span className='deleteC'>Delete Comment</span>
         </div>
-      ))}
+      )) : <p>There are no comments</p>}
+
       <form onSubmit={addComment}>
         <label>
           <input 
             type='text'
-            name='comment'
-            value={edit.comment}
-            onChange={addComment}
+            name='comments'
+            value={comment.comments}
+            onChange={handleComment}
             placeholder='Add a comment'
           />
         </label>
         <button type='submit'>Comment</button>
       </form>
-      {access && <button onClick={() => setEditing(true)}>Edit How-To</button>}
-      {access && <button className='delete' onClick={() => props.deleteGuide}>Delete How-To</button>}
-    </div>) : 
+    </div>
+    
+    <div className='guide-buttons'>
+      <button className='back' onClick={() => history.push('/dashboard')}>Back to How-To's</button>
+      <button className='delete' style={{background: '#db332a'}} onClick={deleteGuide}>Delete How-To</button>
+      <button onClick={() => setEditing(true)}>Edit How-To</button>
+    </div>
+    </>) : 
     (<div>
-      <form onSubmit={submitEdit(edit, edit.id)}>
+      <form className='new-guide' onSubmit={submitEdit}>
         <h1>EDIT GUIDE</h1>
-        <label>
-          <input
+        <label>Title:</label>
+        <input
             type='text'
             name='title'
             value={edit.title}
             onChange={handleEdit}
             placeholder='Title'
-          />
-        </label>
+        />
 
-        <label>
-          <input
+        <label>Description:</label>
+        <textarea
             type='text'
-            name='description'
-            value={edit.title}
+            name='bodyText'
+            value={edit.bodyText}
             onChange={handleEdit}
             placeholder='Description'
-          />
-        </label>
+        />
+
+        <label>Author:</label>
+        <input
+            type='text'
+            name='author'
+            value={edit.author}
+            onChange={handleEdit}
+            placeholder='Author'
+        />
         
         <button type='submit'>Save</button>
-        <button className='cancel' onClick={() => setEditing(false)}>Cancel</button>
+        <button className='cancel' onClick={() => setEditing(!editing)}>Cancel</button>
       </form>
     </div>)}
-
-    <button onClick={() => history.push('/dashboard')}>Back to How-To's</button>
     </>
   )
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     isGetting: state.guides.isGetting,
-//     guide: state.guides.guide,
-//     errors: state.guides.errors
-//   }
-// }
-
-export default connect(null, {getGuide, editGuide, deleteGuide})(Guide);
+export default Guide;

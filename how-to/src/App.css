@@ -8,6 +8,7 @@ nav {
   justify-content: center;
   background-color: #1773f6;
   align-items: center;
+  border-radius: 0 0 20px 20px;
 }
 
 .home-link {
@@ -56,6 +57,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 2rem;
 }
 
 .welcome-buttons button {
@@ -82,6 +84,12 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
+}
+
+.login h3 {
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .login a {
@@ -166,14 +174,35 @@ form button:hover {
  padding-top: 4rem;
 }
 
+.dashboard h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.browse {
+  margin: 0;
+  color: #1773f6;
+}
+
 /* GUIDELIST STYLES */
 .guidelist {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin: 2rem 0 .2rem;
   width: 70%;
+}
+
+.guidelist h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.guidelist h3 {
+  font-size: 1.8rem;
+  margin-top: 1rem;
 }
 
 /* SEARCH FORM STYLES */
@@ -182,23 +211,18 @@ form button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: .4rem;
 }
 
 .search input {
   padding: 1.05rem;
   border: none;
-  border-radius: 10px 0 0 10px;
-  width: 20rem;
+  border-radius: 10px;
+  width: 25rem;
   margin: .5rem 0;
   font-size: 1rem;
   background: rgb(166, 188, 210);
   font-family: 'Avenir';
-}
-
-.search button {
-  width: 10rem;
-  margin: 0;
-  border-radius: 0 10px 10px 0;
 }
 
 .loading {
@@ -207,16 +231,39 @@ form button:hover {
 }
 
 .preview {
-  border: 2px solid #1773f6;
+  border: 6px solid #1773f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
-  padding: 1rem;
   text-decoration: none;
   color: black;
   font-size: 1rem;
+  width: 800px;
+  height: 300px;
+  margin: 1rem auto;
+}
+
+.preview:hover {
+  box-shadow: 0 1px 3px .1px black;
+  color: #1773f6;
+}
+
+.preview-text {
+  padding-left: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #1773f6;
+}
+
+.preview h1 {
+  font-size: 2.2rem;
+  color: black;
 }
 
 .preview img {
-  width: 400px;
+  width: 40%;
+  height: 100%;
 }
 
 /* NEW GUIDE STYLES */
@@ -253,6 +300,10 @@ form button:hover {
   cursor: pointer;
 }
 
+.new-guide label {
+  font-size: 1.4rem;
+}
+
 .new-guide input {
   padding: 1rem 3rem;
   margin: .5rem auto;
@@ -280,4 +331,165 @@ form button:hover {
 .new-guide button:hover {
   cursor: pointer;
   background-color: #165cbf;
+}
+
+.guide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.guide-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.guide-buttons button {
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #1773f6;
+  color: white;
+  width: 14rem;
+  margin: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.guide-buttons button:hover {
+  cursor: pointer;
+  background-color: #165cbf;
+}
+
+.guide h1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+.guide h2 {
+  margin: 0;
+}
+
+.guide h4 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  line-height: 1.6re;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.likes h2 {
+  padding: .2rem 0 0;
+  color: black;
+}
+
+.heart {
+  width: 40px;
+  filter: invert(36%) sepia(45%) saturate(6669%) hue-rotate(208deg) brightness(103%) contrast(93%);
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.guide h3 {
+  font-size: 1.6rem;
+  margin: 1rem 0 .4rem;
+  color: #1773f6;
+}
+
+.cover-img {
+  width: 300px;
+  margin: 0 auto 2rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.comment span {
+ margin: 0 0.6rem 0 0;
+ font-size: 0.8rem;
+ color: red;
+}
+
+.comment p {
+  margin: 0.2rem 0.6rem 0 0;
+  text-align: center;
+  color: rgb(79, 89, 99);
+}
+
+.comment p:hover {
+  text-decoration-color: red;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.comment p:hover + .deleteC, .deleteC:hover {
+  display: inline-block;
+}
+
+.deleteC {
+  display: none;
+}
+
+.guide form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.guide img {
+  border-radius: 20px;
+}
+
+.guide input {
+  margin: 0;
+  border-radius: 10px 0 0 10px;
+  padding: .54rem 4rem .54rem 2rem;
+  width: 420px;
+}
+
+.guide form button {
+  margin: 0;
+  padding: .48rem 1rem;
+  border-radius: 0 10px 10px 0;
+  width: 20%;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../App.css';
 
 
 const Login = ({ loggedIn, setLoggedIn }) => {
@@ -24,7 +25,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
       .post('https://how-to-diy.herokuapp.com/api/auth/login', credentials)
       .then(res => {
         console.log('POST request for login', res);
-        localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('token', res.data.token);
         setLoggedIn(!loggedIn);
         history.push('/dashboard');
       })
@@ -47,7 +48,6 @@ const Login = ({ loggedIn, setLoggedIn }) => {
         <label>
           <input 
             type='text'
-            //autoFocus
             name='username'
             value={credentials.username}
             onChange={handleInput}

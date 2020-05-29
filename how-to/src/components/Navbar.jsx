@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../HowTo.png';
+import About from '../components/About';
 import '../App.css';
 
 const Navbar = ({ loggedIn, setLoggedIn }) => {
@@ -17,7 +18,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       </NavLink>
 
       <div className='nav-links'>
-    {/* <NavLink to='/about'>About</NavLink> */}
+      <NavLink to='/about'>About</NavLink>
         {
           loggedIn === true ? 
           <NavLink to='/login' onClick={logOut}>Logout</NavLink> :

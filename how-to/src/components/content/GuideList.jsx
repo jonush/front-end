@@ -1,44 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchGuides } from '../../actions/fetchGuides';
 import Moment from 'react-moment';
-import SearchBar from '../SearchBar';
+import logo from '../../HowTo.png';
 
-const GuideList = props => {
-  useEffect(() => {
-    props.fetchGuides();
-  }, [])
-
+const GuideList = ({ guides }) => {
   return (
-    <div className='guidelist'>
-      <h1>How-To Guides</h1>
-
-      <SearchBar guides={props.guides} />
-
-      {props.isFetching && <h2 className='loading'>Loading How-To Guides...</h2>}
-
-      {props.guides && 
-        props.guides.map((guide, index) => (
-          <Link to={`/guides/${guide.id}`} key={index}>
-            <div className='preview'>
-              <img src={guide.img} alt='how-to cover'></img>
+    <div>
+      {
+        guides.map((guide, index) => {
+          return <Link  className='preview' to={`/projects/${guide.id}`} key={index}>
+            <div className='preview-text'>
               <h1>{guide.title}</h1>
               <h3><Moment format='MM/DD/YYYY'>{guide.date}</Moment></h3>
             </div>
+            <img src={logo}></img>
           </Link>
-        ))
+        })
       }
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    isFetching: state.guides.isFetching,
-    guides: state.guides.guides,
-    errors: state.guides.errors
-  }
-}
-
-export default connect(mapStateToProps, {fetchGuides})(GuideList);
+export default GuideList;

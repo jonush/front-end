@@ -4,11 +4,11 @@ import { addGuide } from '../../actions/addGuide';
 
 const initialGuide = ({
   title: '',
-  description: '',
+  bodyText: '',
   image: '',
   likes: 0,
+  author: '',
   date: new Date(),
-  comments: []
 })
 
 const NewGuide = props => {
@@ -26,18 +26,19 @@ const NewGuide = props => {
     e.preventDefault();
     props.addGuide(guide);
     setCreating(!creating);
+    setGuide(initialGuide);
   }
 
   return(
     !creating ? 
-    (<button className='create' onClick={() => setCreating(!creating)}>Create a How-To</button>) :
+    (<button className='create' onClick={() => setCreating(!creating)}>Create</button>) :
     (<div>
       {props.isAdding && <h2>Creating your guide...</h2>}
-      <form className='new-guide' onSubmit={createGuide}>
+      <form className='new-guide' encType="multipart/form-data" onSubmit={createGuide}>
         <h1>NEW GUIDE</h1>
         <label htmlFor='image'>Select a cover image:</label>
         <input
-          id='image'
+          id='file'
           type='file'
           accept='image/*'
           name='image'
@@ -56,10 +57,20 @@ const NewGuide = props => {
         </label>
 
         <label>
+          <input
+            type='text'
+            name='author'
+            value={guide.author}
+            onChange={handleInput}
+            placeholder='Author'
+          />
+        </label>
+
+        <label>
           <textarea
             type='text'
-            name='description'
-            value={guide.description}
+            name='bodyText'
+            value={guide.bodyText}
             onChange={handleInput}
             placeholder='Description'
           />
@@ -75,6 +86,7 @@ const NewGuide = props => {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     isAdding: state.add.isAdding,
     guide: state.add.guide,
