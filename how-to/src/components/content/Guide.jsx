@@ -30,7 +30,7 @@ const Guide = () => {
       })
       .then(
         axiosWithAuth()
-          .get(`https://how-to-diy.herokuapp.com/projects/comments/`)
+          .get(`https://how-to-diy.herokuapp.com/comments/`)
           .then(res => setComments(res.data))
           .catch(err => console.log(err))
       )
